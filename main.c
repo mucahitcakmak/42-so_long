@@ -1,8 +1,15 @@
 #include "pacman.h"
 
+void error_message(char *str)
+{
+	ft_printf("Error:\n%s\n", str);
+	exit(1);
+}
+
 int key_code(int keycode, struct_control *stc)
 {
-	write(1, "a\n", 1);
+	if (keycode == 53)
+		exit(1);
 	if (keycode == 0)
 		key_left(stc);
 	else if (keycode == 1)
@@ -28,6 +35,6 @@ int main(int argc, char *argv[])
 	put_image(stc);
 	//mlx_key_hook(stc->win, key_code, stc); // klavyede tuşa basılıp bırakıldığında çağırılan işlev
 	mlx_hook(stc->win, 2, 1L << 0, key_code, stc);
-    mlx_loop(stc->mlx);
+	mlx_loop(stc->mlx);
     return 0;
 }

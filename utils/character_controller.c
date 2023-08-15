@@ -1,11 +1,5 @@
 #include "../pacman.h"
 
-void map_refresh(struct_control *stc)
-{
-	mlx_do_sync(stc->mlx);
-	mlx_clear_window(stc->mlx, stc->win);
-	put_image(stc);
-}
 
 void all(struct_control *stc, int i, int j, int framex, int framey, void *chPos)
 {
@@ -36,25 +30,29 @@ void all(struct_control *stc, int i, int j, int framex, int framey, void *chPos)
 	mlx_put_image_to_window(stc->mlx, stc->win, chPos, stc->ch->x, stc->ch->y);
 }
 
-void all2(struct_control *stc, int i, int j)
+int all2(struct_control *stc, int i, int j)
 {
-	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] != '1')
+	static int step_count = 1;
+
+	if (portal_and_check_img(stc, i, j) == 2)
+		return (0);
+	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] == '0' || stc->map->map[stc->ch->i + i][stc->ch->j + j] == 'C')
 	{
-		stc->map->map[stc->ch->i][stc->ch->j] = '0';
+		ft_printf("Step: %d\n", step_count++);
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'P';
+		stc->map->map[stc->ch->i][stc->ch->j] = '0';
 		map_refresh(stc);
 	}
+	return (0);
 }
 
 void key_left(struct_control *stc)
 {
-	//all(stc, 0, -1, -25, 0, stc->map_img->chL);
 	all2(stc, 0, -1);
 }
 
 void key_right(struct_control *stc)
 {
-	//all(stc, 0, 1, 25, 0, stc->map_img->chT);
 	all2(stc, 0, 1);
 }
 

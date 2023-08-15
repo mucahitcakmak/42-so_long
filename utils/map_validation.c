@@ -18,22 +18,22 @@ void	flood_fill(char **tab, fill_point size, fill_point begin)
 	fill(tab, size, begin, 'C');
 }
 
-char **mapi_boya(map_info *map)
+char **paint_map(map_info *map)
 {
 	char **clone_map;
 	int i;
 	int j;
 
 	i = 0;
-	clone_map = malloc(sizeof(char **) * map->mapsize_y);
+	clone_map = malloc(sizeof(char **) * map->mapsize_x);
 	while (i < map->mapsize_x)
 	{
 		j = 0;
-		clone_map[i] = malloc(sizeof(char *) * map->mapsize_x);
+		clone_map[i] = malloc(sizeof(char *) * map->mapsize_y);
 		while (j < map->mapsize_y)
 		{
 			clone_map[i][j] = map->map[i][j];
-			if (map->map[i][j] == '0' || map->map[i][j] == 'P')
+			if (map->map[i][j] == '0' || map->map[i][j] == 'P' || map->map[i][j] == 'E')
 				clone_map[i][j] = 'C';
 			j++;
 		}
@@ -54,11 +54,13 @@ void is_reachable(map_info *map, char **clone_map)
 		while (j < map->mapsize_y)
 		{
 			if (clone_map[i][j] == 'C')
-				exit(1);
+				error_message("Map ulaşılabilir değil!");
 			j++;
 		}
+		free(clone_map[i]);
 		i++;
 	}
+	free(clone_map);
 }
 
 void map_validation(map_info *map)
@@ -67,13 +69,12 @@ void map_validation(map_info *map)
 	fill_point size;
 	fill_point begin;
 
-
 	size.x = map->mapsize_y;
 	size.y = map->mapsize_x;
 	begin.x = map->ch_j;
 	begin.y = map->ch_i;
-	clone_map = mapi_boya(map);
+
+	clone_map = paint_map(map);
 	flood_fill(clone_map, size, begin);
 	is_reachable(map, clone_map);
-	free(clone_map);
 }

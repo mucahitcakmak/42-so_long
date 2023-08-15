@@ -1,14 +1,5 @@
 #include "../pacman.h"
 
-static void	ft_message_error(map_info *map)
-{
-	if (map->map)
-		free(map->map);
-	free(map);
-	ft_printf("Error!\nHatalı map.\n");
-	exit(1);
-}
-
 map_info	*rectangle_control(map_info *map, char *map_name)
 {
 	int i;
@@ -19,11 +10,11 @@ map_info	*rectangle_control(map_info *map, char *map_name)
 	i = 0;
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		ft_message_error(map);
+		error_message("Geçersiz map4!");
 	line = get_next_line(fd);
-	map->map = malloc(sizeof(char *)* ft_strlen(line));
+	map->map = malloc(sizeof(char *)* (ft_strlen(line) + 20));
 	if (!map->map)
-		ft_message_error(map);
+		error_message("Geçersiz map3!");
 	while (line)
 	{
 		map->map[i++] = line;
@@ -34,7 +25,8 @@ map_info	*rectangle_control(map_info *map, char *map_name)
 	j = 0;
 	while (j < i)
 		if (map->mapsize_y != ft_strlen(map->map[j++]))
-			ft_message_error(map);
+			error_message("Geçersiz map2!");
+
 	return (map);
 }
 
@@ -54,15 +46,15 @@ void	wall_control(map_info *map)
 		}
 	}
 	if (map->p != 1 || map->e != 1 || map->c < 1)
-		ft_message_error(map);
+		error_message("Geçersiz map6!");
 }
 
 void	check_value(map_info *map, int i, int j)
 {
-	if ((map->map[0][j] != '1' || map->map[i][0] != '1' || map->map[i][map->mapsize_y -1] != '1' 
+	if ((map->map[0][j] != '1' || map->map[i][0] != '1' || map->map[i][map->mapsize_y - 1] != '1' 
 			|| map->map[map->mapsize_x - 1][j] != '1') || (map->map[i][j] != '0' && map->map[i][j] != '1' 
 			&& map->map[i][j] != 'C' && map->map[i][j] != 'P' && map->map[i][j] != 'E'))
-			ft_message_error(map);
+			error_message("Geçersiz map7!");
 	if (map->map[i][j] == 'E')
 		map->e +=  1;
 	else if (map->map[i][j] == 'C')

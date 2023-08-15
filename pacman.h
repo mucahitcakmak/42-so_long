@@ -29,6 +29,8 @@ typedef struct images
 	void *chR;
 	void *chL;
 	void *ball;
+	void *portal;
+	void *portalCh;
 }	map_images;
 
 typedef struct character
@@ -37,7 +39,7 @@ typedef struct character
 	int j;
 	int x;
 	int y;
-	
+	int is_finish;
 }	pacman;
 
 typedef struct	s_point
@@ -55,15 +57,20 @@ typedef struct total_structs
 	map_info *map;
 }	struct_control;
 
+
 // main.c
 int key_code(int keycode, struct_control *stc);
+void error_message(char *str);
 
 // utils/put_image.c
 struct_control *images(struct_control *stc);
 void put_image(struct_control *stc);
-void put_image2(struct_control *stc, int i, int j, int x, int y);
+void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin);
+int portal_and_check_img(struct_control *stc, int i, int j);
+void map_refresh(struct_control *stc);
 
 // utils/pacman_controller.c
+int all2(struct_control *stc, int i, int j);
 void key_left(struct_control *stc);
 void key_right(struct_control *stc);
 void key_up(struct_control *stc);
@@ -77,7 +84,6 @@ void arg_check(va_list lst, char c);
 void ft_printf(const char *str, ...);
 
 // utils/check_map.c
-static void	ft_message_error(map_info *map);
 map_info	*rectangle_control(map_info *map, char *map_name);
 void	wall_control(map_info *map);
 void	check_value(map_info *map, int i, int j);
