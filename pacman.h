@@ -5,13 +5,17 @@
 # include "mlx/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
+# include <unistd.h>
+# include <stdarg.h>
 
 typedef struct map_values{
-	int x;
-	int y;
+	int mapsize_x;
+	int mapsize_y;
 	int c;
 	int e;
 	int p;
+	int ch_i;
+	int ch_j;
 	char **map;
 }	map_info;
 
@@ -20,16 +24,27 @@ typedef struct images
 	void *empty;
 	void *wall;
 	void *coin;
-	void *pacmanT;
+	void *chT;
+	void *chB;
+	void *chR;
+	void *chL;
+	void *ball;
 }	map_images;
 
 typedef struct character
 {
 	int i;
 	int j;
+	int x;
+	int y;
 	
 }	pacman;
 
+typedef struct	s_point
+{
+	int			x;
+	int			y;
+}				fill_point;
 
 typedef struct total_structs
 {
@@ -40,10 +55,13 @@ typedef struct total_structs
 	map_info *map;
 }	struct_control;
 
-// pacman.c
+// main.c
+int key_code(int keycode, struct_control *stc);
+
+// utils/put_image.c
 struct_control *images(struct_control *stc);
 void put_image(struct_control *stc);
-int key_code(int keycode, struct_control *stc);
+void put_image2(struct_control *stc, int i, int j, int x, int y);
 
 // utils/pacman_controller.c
 void key_left(struct_control *stc);
@@ -51,10 +69,24 @@ void key_right(struct_control *stc);
 void key_up(struct_control *stc);
 void key_down(struct_control *stc);
 
-// utils/check_map.c
-map_info	*rectangle_control(map_info *map, char *map_name);
-void		wall_control(map_info *map);
-map_info 	*check_map(char *map_name);
+// utils/ft_printf.c
+void ft_putchar(char c);
+void	ft_putnbr(int nb);
+void ft_putstr(char *str);
+void arg_check(va_list lst, char c);
+void ft_printf(const char *str, ...);
 
+// utils/check_map.c
+static void	ft_message_error(map_info *map);
+map_info	*rectangle_control(map_info *map, char *map_name);
+void	wall_control(map_info *map);
+void	check_value(map_info *map, int i, int j);
+map_info *check_map(char *map_name);
+
+
+// map_validation.c
+void	fill(char **tab, fill_point size, fill_point cur, char to_fill);
+void	flood_fill(char **tab, fill_point size, fill_point begin);
+void map_validation(map_info *map);
 
 #endif

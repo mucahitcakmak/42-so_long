@@ -5,7 +5,7 @@ static void	ft_message_error(map_info *map)
 	if (map->map)
 		free(map->map);
 	free(map);
-	perror("\033[1;31m🛑ERROR:\033[0m");
+	ft_printf("Error!\nHatalı map.\n");
 	exit(1);
 }
 
@@ -29,39 +29,50 @@ map_info	*rectangle_control(map_info *map, char *map_name)
 		map->map[i++] = line;
 		line = get_next_line(fd);
 	}
-	map->x = i;
-	map->y = ft_strlen(map->map[0]);
+	map->mapsize_x = i;
+	map->mapsize_y = ft_strlen(map->map[0]);
 	j = 0;
 	while (j < i)
-		if (map->y != ft_strlen(map->map[j++]))
+		if (map->mapsize_y != ft_strlen(map->map[j++]))
 			ft_message_error(map);
 	return (map);
 }
+
+
 void	wall_control(map_info *map)
 {
 	int i;
 	int j;
 
 	i = -1;
-	while (++i < map->x)
+	while (++i < map->mapsize_x)
 	{
 		j = -1;
 		while(map->map[i][++j])
 		{
-			if ((map->map[0][j] != '1' || map->map[i][0] != '1' || map->map[i][map->y -1] != '1' 
-					|| map->map[map->x - 1][j] != '1') || (map->map[i][j] != '0' && map->map[i][j] != '1' 
-					&& map->map[i][j] != 'C' && map->map[i][j] != 'P' && map->map[i][j] != 'E'))
-					ft_message_error(map);
-			if (map->map[i][j] == 'E')
-				map->e +=  1;
-			else if (map->map[i][j] == 'P')
-				map->p += 1;
-			else if (map->map[i][j] == 'C')
-				map->c += 1;
+			check_value(map, i, j);
 		}
 	}
 	if (map->p != 1 || map->e != 1 || map->c < 1)
 		ft_message_error(map);
+}
+
+void	check_value(map_info *map, int i, int j)
+{
+	if ((map->map[0][j] != '1' || map->map[i][0] != '1' || map->map[i][map->mapsize_y -1] != '1' 
+			|| map->map[map->mapsize_x - 1][j] != '1') || (map->map[i][j] != '0' && map->map[i][j] != '1' 
+			&& map->map[i][j] != 'C' && map->map[i][j] != 'P' && map->map[i][j] != 'E'))
+			ft_message_error(map);
+	if (map->map[i][j] == 'E')
+		map->e +=  1;
+	else if (map->map[i][j] == 'C')
+		map->c += 1;
+	else if (map->map[i][j] == 'P')
+	{
+		map->p += 1;
+		map->ch_i = i;
+		map->ch_j = j;
+	}
 }
 
 map_info *check_map(char *map_name)
@@ -72,9 +83,11 @@ map_info *check_map(char *map_name)
 		exit(1);
 	map->e = 0;
 	map->p = 0;
-	map->c = 0; 
+	map->c = 0;
 
 	rectangle_control(map, map_name);
 	wall_control(map);
+
 	return (map);
 }
+
