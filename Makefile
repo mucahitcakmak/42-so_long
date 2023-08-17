@@ -1,10 +1,10 @@
-NAME 	= main
+NAME 	= so_long
 
 CC 		= gcc
 
 CFLAGS 	= -Wall -Wextra -Werror
 
-SRCS 	=	main.c \
+SRCS 	=	so_long.c \
 			get_next_line/get_next_line_utils.c	\
 			get_next_line/get_next_line.c \
 			utils/check_map.c \
@@ -18,7 +18,7 @@ all: $(NAME)
 OBJS	= $(SRCS:.c=.o)
 
 $(NAME): $(OBJ)
-	$(CC) $(SRCS) -g -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	$(CC) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 %.o:%.c
 	@$(CC) $(CFLAGS) -c $^ -o $@
 

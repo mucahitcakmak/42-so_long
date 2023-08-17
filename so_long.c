@@ -21,10 +21,17 @@ int key_code(int keycode, struct_control *stc)
 	return (0);
 }
 
+int close_game(void *param)
+{
+    exit(0);
+}
+
 int main(int argc, char *argv[])
 {
 	struct_control *stc;
 	
+	if (argc != 2)
+		error_message("Eksik argüman!");
 	stc = malloc(sizeof(struct_control));
 	stc->ch = malloc(sizeof(pacman));
 	stc->mlx = mlx_init();
@@ -33,8 +40,8 @@ int main(int argc, char *argv[])
     stc->win = mlx_new_window(stc->mlx, stc->map->mapsize_y * 50, stc->map->mapsize_x * 50, "Puzzle");
 	stc = images(stc);
 	put_image(stc);
-	//mlx_key_hook(stc->win, key_code, stc); // klavyede tuşa basılıp bırakıldığında çağırılan işlev
 	mlx_hook(stc->win, 2, 1L << 0, key_code, stc);
+    mlx_hook(stc->win, 17, 0L, close_game, NULL);
 	mlx_loop(stc->mlx);
     return 0;
 }

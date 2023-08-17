@@ -3,7 +3,7 @@
 void	fill(char **tab, fill_point size, fill_point cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| tab[cur.y][cur.x] != to_fill)
+		|| (tab[cur.y][cur.x] != to_fill))
 		return;
 
 	tab[cur.y][cur.x] = '0';
@@ -33,7 +33,7 @@ char **paint_map(map_info *map)
 		while (j < map->mapsize_y)
 		{
 			clone_map[i][j] = map->map[i][j];
-			if (map->map[i][j] == '0' || map->map[i][j] == 'P' || map->map[i][j] == 'E')
+			if (map->map[i][j] == 'P' || map->map[i][j] == 'E')
 				clone_map[i][j] = 'C';
 			j++;
 		}
@@ -77,4 +77,5 @@ void map_validation(map_info *map)
 	clone_map = paint_map(map);
 	flood_fill(clone_map, size, begin);
 	is_reachable(map, clone_map);
+
 }

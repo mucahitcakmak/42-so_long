@@ -79,26 +79,28 @@ void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin)
 	j++;
 }
 
-int portal_and_check_img(struct_control *stc, int i, int j)
+int portal_and_check_img(struct_control *stc, int i, int j, int *step_count)
 {
-	if (stc->map->map[stc->ch->i][stc->ch->j] == 'X')
+	if (stc->map->map[stc->ch->i][stc->ch->j] == 'X' && stc->map->map[stc->ch->i + i][stc->ch->j + j] != '1')
 	{
 		stc->map->map[stc->ch->i][stc->ch->j] = 'E';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'P';
+		ft_printf("Step: %d\n",++*step_count);
 		map_refresh(stc);
-		return (2);
+		return (31);
 	}
 	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] == 'E')
 	{
 		stc->map->map[stc->ch->i][stc->ch->j] = '0';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'X';
 		map_refresh(stc);
+		ft_printf("Step: %d\n",++*step_count);
 		if (stc->ch->is_finish == 1)
 		{
 			ft_printf("Game Over!");
 			exit(0);
 		}
-		return (2);
+		return (31);
 	}
 	return (0);
 }

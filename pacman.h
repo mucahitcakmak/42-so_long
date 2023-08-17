@@ -66,7 +66,7 @@ void error_message(char *str);
 struct_control *images(struct_control *stc);
 void put_image(struct_control *stc);
 void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin);
-int portal_and_check_img(struct_control *stc, int i, int j);
+int portal_and_check_img(struct_control *stc, int i, int j, int *step_count);
 void map_refresh(struct_control *stc);
 
 // utils/pacman_controller.c
