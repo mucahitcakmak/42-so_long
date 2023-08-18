@@ -12,7 +12,8 @@ SRCS 	=	so_long.c \
 			include/ft_printf.c \
 			utils/put_image.c \
 			utils/map_validation.c \
-			utils/bonus.c
+			utils/bonus.c \
+			utils/put_image2.c
 
 all: $(NAME)
 

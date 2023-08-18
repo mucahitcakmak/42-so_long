@@ -21,8 +21,10 @@ int key_code(int keycode, struct_control *stc)
 	return (0);
 }
 
-int close_game(void *param)
+int close_game(char *str)
 {
+	if (str)
+		ft_printf("%s\n", str);
     exit(0);
 }
 
@@ -32,8 +34,11 @@ int main(int argc, char *argv[])
 	
 	if (argc != 2)
 		error_message("Eksik argüman!");
+
 	stc = malloc(sizeof(struct_control));
 	stc->ch = malloc(sizeof(pacman));
+	stc->enemy = malloc(sizeof(enemy));
+
 	stc->mlx = mlx_init();
 	stc->map = check_map(argv[1]);
 	map_validation(stc->map);

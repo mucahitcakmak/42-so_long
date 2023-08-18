@@ -32,7 +32,7 @@ char **paint_map(map_info *map)
 		while (j < map->mapsize_y)
 		{
 			clone_map[i][j] = map->map[i][j];
-			if (map->map[i][j] == 'P' || map->map[i][j] == 'E')
+			if (map->map[i][j] == 'P' || map->map[i][j] == 'E' || map->map[i][j] == 'M')
 				clone_map[i][j] = '0';
 			j++;
 		}

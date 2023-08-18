@@ -6,6 +6,7 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <math.h>
 
 typedef struct map_values{
 	int mapsize_x;
@@ -13,6 +14,7 @@ typedef struct map_values{
 	int c;
 	int e;
 	int p;
+	int m;
 	int ch_i;
 	int ch_j;
 	char **map;
@@ -23,13 +25,11 @@ typedef struct images
 	void *empty;
 	void *wall;
 	void *coin;
-	void *chT;
-	void *chB;
-	void *chR;
-	void *chL;
+	void *ch;
 	void *ball;
 	void *portal;
 	void *portalCh;
+	void *enemy;
 }	map_images;
 
 typedef struct character
@@ -47,6 +47,12 @@ typedef struct	s_point
 	int			y;
 }				fill_point;
 
+typedef struct enemy_move
+{
+	int i;
+	int j;
+}	enemy;
+
 typedef struct total_structs
 {
 	void *mlx;
@@ -54,27 +60,30 @@ typedef struct total_structs
 	pacman *ch;
 	map_images *map_img;
 	map_info *map;
+	enemy *enemy;
 }	struct_control;
 
+
 // main.c
-int key_code(int keycode, struct_control *stc);
 void error_message(char *str);
+int key_code(int keycode, struct_control *stc);
+int close_game(char *str);
 
 // utils/put_image.c
 struct_control *images(struct_control *stc);
 void put_image(struct_control *stc);
 void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin);
-int portal_and_check_img(struct_control *stc, int i, int j, int *step_count);
-void map_refresh(struct_control *stc);
+int portal_and_check_img(struct_control *stc, int i, int j);
+void map_refresh(struct_control *stc, int i);
 
 // utils/character_controller.c
-int all2(struct_control *stc, int i, int j);
+int all(struct_control *stc, int i, int j, char *ch_image_path);
 void key_left(struct_control *stc);
 void key_right(struct_control *stc);
 void key_up(struct_control *stc);
 void key_down(struct_control *stc);
 
-// utils/ft_printf.c
+// include/ft_printf.c
 void ft_putchar(char c);
 void	ft_putnbr(int nb);
 void ft_putstr(char *str);
@@ -85,6 +94,7 @@ void ft_printf(const char *str, ...);
 map_info	*rectangle_control(map_info *map, char *map_name);
 void	wall_control(map_info *map);
 void	check_value(map_info *map, int i, int j);
+void map_name_control(char *map_name);
 map_info *check_map(char *map_name);
 
 
@@ -96,9 +106,14 @@ void is_reachable(map_info *map, char **clone_map);
 void map_validation(map_info *map);
 
 
-// utls/bonus.c
-void step_refresh(struct_control *stc);
+// utils/bonus.c
+void step_refresh(struct_control *stc, int i);
+int enemy_control(struct_control *stc);
 static int	ft_nbrlen(int n);
 char	*ft_itoa(int n);
+
+// utils/put_image2.c
+void put_image3(struct_control *stc, int i, int j, int x, int y);
+int enemy_move(struct_control *stc, int i, int j);
 
 #endif

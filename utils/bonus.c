@@ -1,12 +1,30 @@
 #include "pacman.h"
 
-void step_refresh(struct_control *stc)
+void step_refresh(struct_control *stc, int i)
 {
 	static int step = 0;
+	char *str;
 
+	if (i == 1)
+		++step;
+	str = ft_itoa(step);
 	mlx_string_put(stc->mlx, stc->win, 8, 20, 255, "STEP:");
-	mlx_string_put(stc->mlx, stc->win, 18, 35, 255, ft_itoa(step));
-	step++;
+	mlx_string_put(stc->mlx, stc->win, 18, 35, 255, str);
+	free(str);
+}
+
+int enemy_control(struct_control *stc)
+{
+	int a = rand() % 4;
+	if (a == 0)
+		enemy_move(stc, 0, -1);
+	else if ( a == 1)
+		enemy_move(stc, 0, 1);
+	else if ( a == 2)
+		enemy_move(stc, -1, 0);
+	else
+		enemy_move(stc, 1, 0);	
+	return (0);
 }
 
 static int	ft_nbrlen(int n)
