@@ -53,7 +53,7 @@ void is_reachable(map_info *map, char **clone_map)
 		while (j < map->mapsize_y)
 		{
 			if (clone_map[i][j] == 'C')
-				error_message("Map ulaşılabilir değil!");
+				error_message("The map is wrong!");
 			j++;
 		}
 		free(clone_map[i]);

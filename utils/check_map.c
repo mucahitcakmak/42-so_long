@@ -10,11 +10,11 @@ map_info	*rectangle_control(map_info *map, char *map_name)
 	i = 0;
 	fd = open(map_name, O_RDONLY);
 	if (fd == -1)
-		error_message("Dosya açılamadı!");
+		error_message("The file could not be opened!");
 	line = get_next_line(fd);
 	map->map = malloc(sizeof(char *)* (ft_strlen(line) + 1));
 	if (!map->map)
-		error_message("Bellek Hatası!");
+		error_message("Memory error!");
 	while (line)
 	{
 		map->map[i++] = line;
@@ -25,7 +25,7 @@ map_info	*rectangle_control(map_info *map, char *map_name)
 	j = 0;
 	while (j < i)
 		if (map->mapsize_y != ft_strlen(map->map[j++]))
-			error_message("Harita dikdörtgen değil!");
+			error_message("The map is not rectangular!");
 	return (map);
 }
 
@@ -45,7 +45,7 @@ void	wall_control(map_info *map)
 		}
 	}
 	if (map->p != 1 || map->e != 1 || map->c < 1)
-		error_message("Haritada hata var!");
+		error_message("There is an error on the map!");
 }
 
 void	check_value(map_info *map, int i, int j)
@@ -53,7 +53,7 @@ void	check_value(map_info *map, int i, int j)
 	if ((map->map[0][j] != '1' || map->map[i][0] != '1' || map->map[i][map->mapsize_y - 1] != '1' 
 			|| map->map[map->mapsize_x - 1][j] != '1') || (map->map[i][j] != '0' && map->map[i][j] != '1' 
 			&& map->map[i][j] != 'C' && map->map[i][j] != 'P' && map->map[i][j] != 'E'))
-			error_message("Haritada tanımlanamayan veriler var!");
+			error_message("There is unidentified data on the map!");
 	if (map->map[i][j] == 'E')
 		map->e +=  1;
 	else if (map->map[i][j] == 'C')
@@ -90,7 +90,7 @@ void map_name_control(char *map_name)
 		i++;
 	}
 	if (count != 4)
-		error_message(".ber dosya değil");
+		error_message("Filename extension must be .ber!");
 }
 
 map_info *check_map(char *map_name)
@@ -106,7 +106,7 @@ map_info *check_map(char *map_name)
 	map_name_control(map_name);
 	rectangle_control(map, map_name);
 	if (map->mapsize_x > 26 || map->mapsize_y > 50)
-		error_message("harita boyutu fazla!");
+		error_message("The map is too large!");
 	wall_control(map);
 
 	return (map);
