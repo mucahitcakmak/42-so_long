@@ -1,4 +1,4 @@
-#include "../pacman.h"
+#include "pacman.h"
 
 map_info	*rectangle_control(map_info *map, char *map_name)
 {

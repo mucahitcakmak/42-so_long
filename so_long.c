@@ -1,4 +1,4 @@
-#include "pacman.h"
+#include "utils/pacman.h"
 
 void error_message(char *str)
 {

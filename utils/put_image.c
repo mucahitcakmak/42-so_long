@@ -1,4 +1,4 @@
-#include "../pacman.h"
+#include "pacman.h"
 
 struct_control *images(struct_control *stc)
 {
@@ -6,16 +6,16 @@ struct_control *images(struct_control *stc)
 	int pixel_x;
 	int pixel_y;
 
-	stc->map_img->empty = mlx_xpm_file_to_image(stc->mlx, "img/empty.xpm", &pixel_x, &pixel_y);
-	stc->map_img->wall = mlx_xpm_file_to_image(stc->mlx, "img/wall.xpm", &pixel_x, &pixel_y);
-	stc->map_img->coin = mlx_xpm_file_to_image(stc->mlx, "img/coin.xpm", &pixel_x, &pixel_y);
-	stc->map_img->chT = mlx_xpm_file_to_image(stc->mlx, "img/tombT.xpm", &pixel_x, &pixel_y);
-	stc->map_img->chB = mlx_xpm_file_to_image(stc->mlx, "img/tombB.xpm", &pixel_x, &pixel_y);
-	stc->map_img->chL = mlx_xpm_file_to_image(stc->mlx, "img/tombL.xpm", &pixel_x, &pixel_y);
-	stc->map_img->chR = mlx_xpm_file_to_image(stc->mlx, "img/tombR.xpm", &pixel_x, &pixel_y);
-	stc->map_img->ball = mlx_xpm_file_to_image(stc->mlx, "img/ball.xpm", &pixel_x, &pixel_y);
-	stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, "img/portal.xpm", &pixel_x, &pixel_y);
-	stc->map_img->portalCh = mlx_xpm_file_to_image(stc->mlx, "img/portalCh.xpm", &pixel_x, &pixel_y);
+	stc->map_img->empty = mlx_xpm_file_to_image(stc->mlx, "textures/empty.xpm", &pixel_x, &pixel_y);
+	stc->map_img->wall = mlx_xpm_file_to_image(stc->mlx, "textures/wall.xpm", &pixel_x, &pixel_y);
+	stc->map_img->coin = mlx_xpm_file_to_image(stc->mlx, "textures/coin.xpm", &pixel_x, &pixel_y);
+	stc->map_img->chT = mlx_xpm_file_to_image(stc->mlx, "textures/tombT.xpm", &pixel_x, &pixel_y);
+	stc->map_img->chB = mlx_xpm_file_to_image(stc->mlx, "textures/tombB.xpm", &pixel_x, &pixel_y);
+	stc->map_img->chL = mlx_xpm_file_to_image(stc->mlx, "textures/tombL.xpm", &pixel_x, &pixel_y);
+	stc->map_img->chR = mlx_xpm_file_to_image(stc->mlx, "textures/tombR.xpm", &pixel_x, &pixel_y);
+	stc->map_img->ball = mlx_xpm_file_to_image(stc->mlx, "textures/ball.xpm", &pixel_x, &pixel_y);
+	stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, "textures/portal.xpm", &pixel_x, &pixel_y);
+	stc->map_img->portalCh = mlx_xpm_file_to_image(stc->mlx, "textures/portalCh.xpm", &pixel_x, &pixel_y);
 	return (stc);
 }
 // portal sarı renk "#F7AF00"

@@ -5,11 +5,11 @@ CC 		= gcc
 CFLAGS 	= -Wall -Wextra -Werror
 
 SRCS 	=	so_long.c \
-			get_next_line/get_next_line_utils.c	\
-			get_next_line/get_next_line.c \
+			include/get_next_line/get_next_line_utils.c	\
+			include/get_next_line/get_next_line.c \
 			utils/check_map.c \
 			utils/character_controller.c \
-			utils/ft_printf.c \
+			include/ft_printf.c \
 			utils/put_image.c \
 			utils/map_validation.c
 

@@ -1,12 +1,11 @@
-#include "../pacman.h"
+#include "pacman.h"
 
 void	fill(char **tab, fill_point size, fill_point cur, char to_fill)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| (tab[cur.y][cur.x] != to_fill))
-		return;
-
-	tab[cur.y][cur.x] = '0';
+	|| tab[cur.y][cur.x] == to_fill)
+		return ;
+	tab[cur.y][cur.x] = '1';
 	fill(tab, size, (fill_point){cur.x - 1, cur.y}, to_fill);
 	fill(tab, size, (fill_point){cur.x + 1, cur.y}, to_fill);
 	fill(tab, size, (fill_point){cur.x, cur.y - 1}, to_fill);
@@ -15,7 +14,7 @@ void	fill(char **tab, fill_point size, fill_point cur, char to_fill)
 
 void	flood_fill(char **tab, fill_point size, fill_point begin)
 {
-	fill(tab, size, begin, 'C');
+	fill(tab, size, begin, '1');
 }
 
 char **paint_map(map_info *map)
@@ -34,7 +33,7 @@ char **paint_map(map_info *map)
 		{
 			clone_map[i][j] = map->map[i][j];
 			if (map->map[i][j] == 'P' || map->map[i][j] == 'E')
-				clone_map[i][j] = 'C';
+				clone_map[i][j] = '0';
 			j++;
 		}
 		i++;

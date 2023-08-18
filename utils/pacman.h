@@ -1,10 +1,9 @@
 #ifndef PACMAN_H
 # define PACMAN_H
 
-# include "get_next_line/get_next_line.h"
-# include "mlx/mlx.h"
+# include "../include/get_next_line/get_next_line.h"
+# include "../mlx/mlx.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
 
@@ -57,7 +56,6 @@ typedef struct total_structs
 	map_info *map;
 }	struct_control;
 
-
 // main.c
 int key_code(int keycode, struct_control *stc);
 void error_message(char *str);
@@ -69,7 +67,7 @@ void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin);
 int portal_and_check_img(struct_control *stc, int i, int j, int *step_count);
 void map_refresh(struct_control *stc);
 
-// utils/pacman_controller.c
+// utils/character_controller.c
 int all2(struct_control *stc, int i, int j);
 void key_left(struct_control *stc);
 void key_right(struct_control *stc);
@@ -90,9 +88,11 @@ void	check_value(map_info *map, int i, int j);
 map_info *check_map(char *map_name);
 
 
-// map_validation.c
+// utils/map_validation.c
 void	fill(char **tab, fill_point size, fill_point cur, char to_fill);
 void	flood_fill(char **tab, fill_point size, fill_point begin);
+char **paint_map(map_info *map);
+void is_reachable(map_info *map, char **clone_map);
 void map_validation(map_info *map);
 
 #endif

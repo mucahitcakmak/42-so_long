@@ -1,4 +1,4 @@
-#include "../pacman.h"
+#include "pacman.h"
 
 int all(struct_control *stc, int i, int j)
 {
