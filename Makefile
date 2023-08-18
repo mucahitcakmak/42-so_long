@@ -11,7 +11,8 @@ SRCS 	=	so_long.c \
 			utils/character_controller.c \
 			include/ft_printf.c \
 			utils/put_image.c \
-			utils/map_validation.c
+			utils/map_validation.c \
+			utils/bonus.c
 
 all: $(NAME)
 

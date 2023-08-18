@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	stc->mlx = mlx_init();
 	stc->map = check_map(argv[1]);
 	map_validation(stc->map);
-    stc->win = mlx_new_window(stc->mlx, stc->map->mapsize_y * 50, stc->map->mapsize_x * 50, "Puzzle");
+    stc->win = mlx_new_window(stc->mlx, stc->map->mapsize_y * 50, stc->map->mapsize_x * 50, "So_long");
 	stc = images(stc);
 	put_image(stc);
 	mlx_hook(stc->win, 2, 1L << 0, key_code, stc);

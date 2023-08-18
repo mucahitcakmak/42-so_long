@@ -8,7 +8,6 @@ int all(struct_control *stc, int i, int j)
 		return (0);
 	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] == '0' || stc->map->map[stc->ch->i + i][stc->ch->j + j] == 'C')
 	{
-		ft_printf("Step: %d\n", ++step_count);
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'P';
 		stc->map->map[stc->ch->i][stc->ch->j] = '0';
 		map_refresh(stc);

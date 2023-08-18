@@ -95,4 +95,10 @@ char **paint_map(map_info *map);
 void is_reachable(map_info *map, char **clone_map);
 void map_validation(map_info *map);
 
+
+// utls/bonus.c
+void step_refresh(struct_control *stc);
+static int	ft_nbrlen(int n);
+char	*ft_itoa(int n);
+
 #endif

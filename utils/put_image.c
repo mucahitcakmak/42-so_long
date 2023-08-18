@@ -18,8 +18,6 @@ struct_control *images(struct_control *stc)
 	stc->map_img->portalCh = mlx_xpm_file_to_image(stc->mlx, "textures/portalCh.xpm", &pixel_x, &pixel_y);
 	return (stc);
 }
-// portal sarı renk "#F7AF00"
-// portal mor renk "#A300CD"
 
 void put_image(struct_control *stc)
 {
@@ -33,6 +31,7 @@ void put_image(struct_control *stc)
 	x = 0;
 	y = 0;
 	coin = 0;
+	step_refresh(stc);
 	while (++i < stc->map->mapsize_x)
 	{
 		j = 0;
@@ -46,9 +45,7 @@ void put_image(struct_control *stc)
 	}
 	stc->ch->is_finish = 0;
 	if (coin == 0)
-	{
 		stc->ch->is_finish = 1;
-	}
 }
 
 void put_image2(struct_control *stc, int i, int j, int x, int y, int *coin)
@@ -85,7 +82,6 @@ int portal_and_check_img(struct_control *stc, int i, int j, int *step_count)
 	{
 		stc->map->map[stc->ch->i][stc->ch->j] = 'E';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'P';
-		ft_printf("Step: %d\n",++*step_count);
 		map_refresh(stc);
 		return (31);
 	}
@@ -94,7 +90,6 @@ int portal_and_check_img(struct_control *stc, int i, int j, int *step_count)
 		stc->map->map[stc->ch->i][stc->ch->j] = '0';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'X';
 		map_refresh(stc);
-		ft_printf("Step: %d\n",++*step_count);
 		if (stc->ch->is_finish == 1)
 		{
 			ft_printf("Game Over!");
