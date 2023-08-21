@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   bonus.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/08/21 15:17:59 by mucakmak          #+#    #+#             */
+/*   Updated: 2023/08/21 15:45:06 by mucakmak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pacman.h"
 
-void step_refresh(struct_control *stc, int i)
+void	step_refresh(t_struct_control *stc, int i)
 {
-	static int step = 0;
-	char *str;
+	static int	step = 0;
+	char		*str;
 
 	if (i == 1)
 		++step;
@@ -13,17 +25,19 @@ void step_refresh(struct_control *stc, int i)
 	free(str);
 }
 
-int enemy_control(struct_control *stc)
+int	enemy_control(t_struct_control *stc)
 {
-	int a = rand() % 4;
+	int	a;
+
+	a = rand() % 4;
 	if (a == 0)
 		enemy_move(stc, 0, -1);
-	else if ( a == 1)
+	else if (a == 1)
 		enemy_move(stc, 0, 1);
-	else if ( a == 2)
+	else if (a == 2)
 		enemy_move(stc, -1, 0);
 	else
-		enemy_move(stc, 1, 0);	
+		enemy_move(stc, 1, 0);
 	return (0);
 }
 
