@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:19:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 15:59:24 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:08:01 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pacman.h"
+#include "so_long.h"
 
 int	all(t_struct_control *stc, int i, int j, char *ch_image_path)
 {

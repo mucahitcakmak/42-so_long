@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:17:59 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 15:45:06 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:08:04 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pacman.h"
+#include "so_long.h"
 
 void	step_refresh(t_struct_control *stc, int i)
 {

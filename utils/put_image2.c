@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:48:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 18:30:30 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:07:52 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pacman.h"
+#include "so_long.h"
 
 void	put_image3(t_struct_control *stc, int i, int j, int *coordinate)
 {

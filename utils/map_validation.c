@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:22:01 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 15:47:58 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:07:57 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pacman.h"
+#include "so_long.h"
 
 void	fill(char **tab, t_fill_point size, t_fill_point cur, char to_fill)
 {

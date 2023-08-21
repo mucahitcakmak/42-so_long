@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:55:19 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 18:04:44 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 19:07:30 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils/pacman.h"
+#include "utils/so_long.h"
 
 t_struct_control	*images(t_struct_control *stc)
 {
