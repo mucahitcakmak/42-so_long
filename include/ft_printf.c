@@ -6,11 +6,11 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 02:00:13 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 18:31:20 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/21 20:00:44 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../utils/pacman.h"
+#include "../utils/so_long.h"
 
 void	ft_putchar(char c)
 {
