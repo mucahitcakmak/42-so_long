@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:18:01 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 10:55:35 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 12:57:47 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ t_map_info	*rectangle_control(t_map_info *map, char *map_name)
 	if (fd == -1)
 		error_message("The file could not be opened!");
 	line = get_next_line(fd);
+	if (!line)
+		error_message("Empty Map!");
 	map->map = malloc(sizeof(char *) * (ft_strlen(line) + 1));
 	if (!map->map)
 		error_message("Memory error!");
@@ -34,10 +36,6 @@ t_map_info	*rectangle_control(t_map_info *map, char *map_name)
 	}
 	map->mapsize_x = i;
 	map->mapsize_y = ft_strlen(map->map[0]);
-	j = 0;
-	while (j < i)
-		if (map->mapsize_y != ft_strlen(map->map[j++]))
-			error_message("The map is not rectangular!");
 	return (map);
 }
 
@@ -113,6 +111,7 @@ void	map_name_control(char *map_name)
 
 t_map_info	*check_map(char *map_name)
 {
+	int			j;
 	t_map_info	*map;
 
 	map = malloc(sizeof(t_map_info));
@@ -125,6 +124,10 @@ t_map_info	*check_map(char *map_name)
 	map_name_control(map_name);
 	map_name2_control(map_name);
 	rectangle_control(map, map_name);
+	j = 0;
+	while (j < map->mapsize_x)
+		if (map->mapsize_y != ft_strlen(map->map[j++]))
+			error_message("The map is not rectangular!");
 	if (map->mapsize_x > 26 || map->mapsize_y > 50)
 		error_message("The map is too large!");
 	wall_control(map);
