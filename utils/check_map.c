@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:18:01 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 12:57:47 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 19:35:11 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_map_info	*rectangle_control(t_map_info *map, char *map_name)
 {
 	int		i;
-	int		j;
 	int		fd;
 	char	*line;
 

@@ -15,19 +15,18 @@ SRCS 	=	so_long.c \
 			utils/put_image.c \
 			utils/put_image2.c
 
+
 all: $(NAME)
 
 OBJS	= $(SRCS:.c=.o)
 
-$(NAME): $(OBJ)
-	$(CC) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-%.o:%.c
-	@$(CC) $(CFLAGS) -c $^ -o $@
+$(NAME): $(OBJS)
+	$(CC) $(SRCS) $(CFLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 clean:
-	@rm -f $(OBJS)
+	rm -f $(OBJS)
 
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all

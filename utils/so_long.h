@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:23:39 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 14:44:19 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 19:35:03 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void		ft_printf(const char *str, ...);
 // utils/bonus.c
 void		step_refresh(t_struct_control *stc, int i);
 int			enemy_control(t_struct_control *stc);
-static int	ft_nbrlen(int n);
 char		*ft_itoa(int n);
 
 // utils/character_controller.c
