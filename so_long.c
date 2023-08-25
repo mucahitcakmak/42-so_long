@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:55:19 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 12:29:44 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 14:53:01 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ t_struct_control	*images(t_struct_control *stc)
 			"textures/tombL.xpm", &px, &py);
 	stc->map_img->ch = mlx_xpm_file_to_image(stc->mlx, 
 			"textures/tombR.xpm", &px, &py);
-	stc->map_img->ball = mlx_xpm_file_to_image(stc->mlx, 
-			"textures/ball.xpm", &px, &py);
 	stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, 
 			"textures/portal.xpm", &px, &py);
 	stc->map_img->portal_ch = mlx_xpm_file_to_image(stc->mlx, 
@@ -85,6 +83,7 @@ int	main(int argc, char *argv[])
 	put_image(stc);
 	mlx_hook(stc->win, 2, 1L << 0, key_code, stc);
 	mlx_hook(stc->win, 17, 0L, close_game, NULL);
+	mlx_loop_hook(stc->mlx, portal_animation, stc);
 	mlx_loop(stc->mlx);
 	return (0);
 }

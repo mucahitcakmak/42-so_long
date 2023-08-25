@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:48:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 11:20:05 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 16:23:55 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,27 @@ void	map_name2_control(char *map_name)
 {
 	if (map_name[0] == '.' || map_name[5] == '.')
 		error_message("Hidden file cannot be opened!");
+}
+
+int	portal_animation(t_struct_control *stc)
+{
+	int			x;
+	static int	i = 0;
+
+	i += 4;
+	if (i < 25)
+		stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, \
+				"textures/portal3.xpm", &x, &x);
+	else if (i < 50)
+		stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, \
+				"textures/portal.xpm", &x, &x);
+	else if (i < 75)
+		stc->map_img->portal = mlx_xpm_file_to_image(stc->mlx, \
+				"textures/portal2.xpm", &x, &x);
+	if (i >= 75)
+		i = 0;
+	mlx_clear_window(stc->mlx, stc->win);
+	put_image(stc);
+	step_refresh(stc, 0);
+	return (0);
 }
