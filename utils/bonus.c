@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:17:59 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 19:08:04 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:25:16 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	step_refresh(t_struct_control *stc, int i)
 	if (i == 1)
 		++step;
 	str = ft_itoa(step);
-	mlx_string_put(stc->mlx, stc->win, 8, 20, 255, "STEP:");
-	mlx_string_put(stc->mlx, stc->win, 18, 35, 255, str);
+	mlx_string_put(stc->mlx, stc->win, 8, 20, 0xFFFFFF, "STEP:");
+	mlx_string_put(stc->mlx, stc->win, 18, 35, 0xFFFFFF, str);
 	free(str);
 }
 

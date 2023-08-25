@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:19:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 11:17:36 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:15:14 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	all(t_struct_control *stc, int i, int j, char *ch_image_path)
 	int	p_x;
 	int	p_y;
 
-	enemy_control(stc);
 	if (portal_and_check_img(stc, i, j) == 2)
 		return (0);
 	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] == 'M')
@@ -30,6 +29,7 @@ int	all(t_struct_control *stc, int i, int j, char *ch_image_path)
 		if (i == 0)
 			stc->map_img->ch = 
 				mlx_xpm_file_to_image(stc->mlx, ch_image_path, &p_x, &p_y);
+		enemy_control(stc);
 		map_refresh(stc, 1);
 	}
 	return (0);

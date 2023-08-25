@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:47:31 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/25 15:00:58 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 20:15:23 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ int	portal_and_check_img(t_struct_control *stc, int i, int j)
 	{
 		stc->map->map[stc->ch->i][stc->ch->j] = 'E';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'P';
+		enemy_control(stc);
 		map_refresh(stc, 1);
 		return (2);
 	}
@@ -74,6 +75,7 @@ int	portal_and_check_img(t_struct_control *stc, int i, int j)
 		stc->map->map[stc->ch->i][stc->ch->j] = '0';
 		stc->map->map[stc->ch->i + i][stc->ch->j + j] = 'X';
 		map_refresh(stc, 1);
+		enemy_control(stc);
 		if (stc->ch->is_finish == 1)
 		{
 			ft_printf("Game Over!");
