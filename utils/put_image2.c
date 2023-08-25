@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:48:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 19:07:52 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:20:05 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,11 @@ int	enemy_move(t_struct_control *stc, int i, int j)
 		stc->map->map[stc->enemy->i][stc->enemy->j] = '0';
 		map_refresh(stc, 0);
 	}
-	return (31);
+	return (0);
+}
+
+void	map_name2_control(char *map_name)
+{
+	if (map_name[0] == '.' || map_name[5] == '.')
+		error_message("Hidden file cannot be opened!");
 }

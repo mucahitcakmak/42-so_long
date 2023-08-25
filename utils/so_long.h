@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:23:39 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 19:45:58 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 10:58:39 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void		map_refresh(t_struct_control *stc, int i);
 // utils/put_image2.c
 void		put_image3(t_struct_control *stc, int i, int j, int *coordinate);
 int			enemy_move(t_struct_control *stc, int i, int j);
+void		map_name2_control(char *map_name);
 
 // main.c
 void		error_message(char *str);

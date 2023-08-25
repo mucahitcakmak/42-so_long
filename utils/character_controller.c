@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:19:46 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 19:08:01 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 11:17:36 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	all(t_struct_control *stc, int i, int j, char *ch_image_path)
 	int	p_y;
 
 	enemy_control(stc);
-	if (portal_and_check_img(stc, i, j) == 31)
+	if (portal_and_check_img(stc, i, j) == 2)
 		return (0);
 	if (stc->map->map[stc->ch->i + i][stc->ch->j + j] == 'M')
 		close_game("YOU DIED!");

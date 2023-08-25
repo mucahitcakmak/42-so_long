@@ -6,7 +6,7 @@
 /*   By: mucakmak <mucakmak@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/21 15:18:01 by mucakmak          #+#    #+#             */
-/*   Updated: 2023/08/21 19:07:59 by mucakmak         ###   ########.fr       */
+/*   Updated: 2023/08/25 10:55:35 by mucakmak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ t_map_info	*check_map(char *map_name)
 	map->c = 0;
 	map->m = 0;
 	map_name_control(map_name);
+	map_name2_control(map_name);
 	rectangle_control(map, map_name);
 	if (map->mapsize_x > 26 || map->mapsize_y > 50)
 		error_message("The map is too large!");
